@@ -3,7 +3,7 @@
 	import { post } from 'utils.js';
 	const { session } = stores();
 	let username = '';
-	let email = '';
+	let Name = '';
 	let password = '';
 	let error = null;
 
@@ -33,14 +33,14 @@
 					<a href="/login">Have an account?</a>
 				</p>
 
-				{error}
+
 
 				<form on:submit|preventDefault={submit}>
 					<fieldset class="form-group">
-						<input class="form-control form-control-lg" type="text" required placeholder="Your Name" bind:value={username}>
+						<input class="form-control form-control-lg" type="text" required placeholder="Your UserName" bind:value={username}>
 					</fieldset>
 					<fieldset class="form-group">
-						<input class="form-control form-control-lg" type="email" required placeholder="Email" bind:value={email}>
+						<input class="form-control form-control-lg" type="Name" required placeholder="Name" bind:value={Name}>
 					</fieldset>
 					<fieldset class="form-group">
 						<input class="form-control form-control-lg" type="password" required placeholder="Password" bind:value={password}>
