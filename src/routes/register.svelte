@@ -8,7 +8,7 @@
 	let error = null;
 
 	async function submit(event) {
-		const response = await post(`auth/register`, { username, email, password });
+		const response = await post(`auth/register`, { username, Name, password });
 
 		// TODO handle network errors
 		error = response.error;
@@ -33,6 +33,9 @@
 					<a href="/login">Have an account?</a>
 				</p>
 
+				{#if error}
+					<div class="alert alert-danger" role="alert">{error}</div>
+				{/if}
 
 
 				<form on:submit|preventDefault={submit}>
