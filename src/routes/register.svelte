@@ -10,11 +10,8 @@
 	async function submit(event) {
 		const response = await post(`auth/register`, { username, Name, password });
 
-		// TODO handle network errors
 		error = response.error;
-
-		if (response.user) {
-			$session.user = response.user;
+		if (response.id) {
 			goto('/');
 		}
 	}
@@ -37,17 +34,23 @@
 					<div class="alert alert-danger" role="alert">{error}</div>
 				{/if}
 
-
 				<form on:submit|preventDefault={submit}>
 					<fieldset class="form-group">
 						<input class="form-control form-control-lg" type="text" required placeholder="Your UserName" bind:value={username}>
 					</fieldset>
+					<br>
 					<fieldset class="form-group">
 						<input class="form-control form-control-lg" type="Name" required placeholder="Name" bind:value={Name}>
 					</fieldset>
+					<br>
 					<fieldset class="form-group">
 						<input class="form-control form-control-lg" type="password" required placeholder="Password" bind:value={password}>
+						<br>
+						{#if password.length > 1 && password.length < 6}
+							<sup><div class="alert alert-danger"role="alert">Password to short</div></sup>
+						{/if}
 					</fieldset>
+					<br>
 					<button class="btn btn-lg btn-primary pull-xs-right">
 						Sign up
 					</button>
